@@ -2,9 +2,20 @@ class Api::Inbound::SmsController < ApplicationController
   before_action :authorized
   def create
     @to = PhoneNumber.find_by(number: query_params[:to])
-    @from =  PhoneNumber.find_by(number: query_params[:from])
-    account = logged_in_user.phone_numbers
-    length_validation
+    text = query_params[:text]
+    from = query_params[:from]
+    to = query_params[:to]
+    if (to.size >= 6 && to.size <= 16 && from.size >= 6 && from.size <= 16 && text.size <= 120) && from.is_a?(String) && text.is_a?(String) && to.is_a?(String)
+      if @to.nil?
+        render json: { message: '', error: 'to parameter not found' }
+      elsif @to.account_id != logged_in_user.id
+        render json: { message: '', error: 'to parameter not found' }
+      else 
+        render json: { message: 'inbound sms ok', error: '' }
+      end
+    else
+      return length_validation
+    end
   end
 
   private 
@@ -29,6 +40,6 @@ class Api::Inbound::SmsController < ApplicationController
         error = key + ' is invalid 3'
       end
     end
-    render json: {message: '', error: error}
+     render json: { message: '', error: error }
   end
 end
