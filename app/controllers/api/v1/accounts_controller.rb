@@ -1,8 +1,8 @@
 class Api::V1::AccountsController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: :create
+
   def create
     @account = Account.new(account_params)
-
     if @account.save
       payload = { account_id: @account.id }
       token = encode_token(payload)

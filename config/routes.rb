@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :accounts, only: :create
+      resources :accounts, only: [:create, :index]
       resources :phone_numbers, only: [:create, :index]
     end
   end

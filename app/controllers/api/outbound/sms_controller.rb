@@ -1,7 +1,25 @@
 class Api::Outbound::SmsController < ApplicationController
-  def index
-    @accounts = Account.all
+  before_action :authorized
+  def create
+    @from = phone_number(query_params[:from])
+    text = query_params[:text]
+    from = query_params[:from]
+    to = query_params[:to]
+    if (to.size >= 6 && to.size <= 16 && from.size >= 6 && from.size <= 16 && text.size <= 120) &&
+        from.is_a?(String) && text.is_a?(String) && to.is_a?(String) &&
+        text.split(' ').include?('STOP')
+      get_stop() 
+    elsif (to.size >= 6 && to.size <= 16 && from.size >= 6 && from.size <= 16 && text.size <= 120) &&
+           from.is_a?(String) && text.is_a?(String) && to.is_a?(String)
+     found_number(@from, 'from', to, from)
+    else
+      return length_validation
+    end
+  end
 
-    render json: {user: @accounts, message: 'outbounds'}
+  private 
+
+  def query_params
+    params.permit(:to, :from, :text)
   end
 end
