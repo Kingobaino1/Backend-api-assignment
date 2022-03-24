@@ -7,7 +7,7 @@ class Api::Inbound::SmsController < ApplicationController
     to = query_params[:to]
     if (to.size >= 6 && to.size <= 16 && from.size >= 6 && from.size <= 16 && text.size <= 120) &&
         from.is_a?(String) && text.is_a?(String) && to.is_a?(String) &&
-        (text.split(' ').include?('STOP') && to != from )
+        (text.split(' ').include?('STOP') && to != from && !@to.nil?)
       set_stop()
       single_stop()
       render json: { message: '', error: 'unknown failure' }  

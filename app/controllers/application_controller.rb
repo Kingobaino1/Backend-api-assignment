@@ -91,16 +91,22 @@ class ApplicationController < ActionController::API
 
   def get_stop
     error = ''
+    stop_error = ''
+    limit_error = ''
     to = query_params[:to]
     from = query_params[:from]
     stop_hash = $redis.hgetall 'STOP'
     stop_hash.each do |key, value|
-      if to != key && 'to' != key && from == value
-        error = creation_time(time_now(), value)
-      elsif to == key && from == value
-        error = "sms from #{from} to #{to} blocked by STOP request here"
+      num_exists = phone_number(value)
+      if to == key && from == value
+        stop_error = "sms from #{from} to #{to} blocked by STOP request here"
+        break
+      else
+        limit_error = creation_time(time_now(), value)
       end
+      
     end
+    error = stop_error + limit_error
     render json: { message: '', error: error }
   end
 
