@@ -200,7 +200,7 @@ To deploy this app to Heroku follow the steps below
 
 Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
-After that type the command below into your teminal.
+After that type the command below into your terminal.
 
 ```
 heroku create
