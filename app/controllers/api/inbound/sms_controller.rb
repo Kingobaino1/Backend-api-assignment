@@ -13,7 +13,7 @@ class Api::Inbound::SmsController < ApplicationController
       render json: { message: '', error: 'unknown failure' }  
     elsif (to.size >= 6 && to.size <= 16 && from.size >= 6 && from.size <= 16 && text.size <= 120) &&
            from.is_a?(String) && text.is_a?(String) && to.is_a?(String)
-     found_number(@to, 'to', to, from)
+     found_number(@to, 'to', to, from, 'inbound sms ok')
     else
       return length_validation
     end

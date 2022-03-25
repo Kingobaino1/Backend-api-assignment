@@ -55,7 +55,7 @@ class ApplicationController < ActionController::API
      render json: { message: '', error: error }
   end
 
-  def found_number(param, name, to, from)
+  def found_number(param, name, to, from, msg)
     if param.nil?
       render json: { message: '', error: name + ' parameter not found1' }
     elsif param.account_id != logged_in_user.id
@@ -63,7 +63,7 @@ class ApplicationController < ActionController::API
     elsif to == from
       render json: { message: '', error: 'unknown failure'}
     else
-      render json: { message: 'inbound sms ok', error: '' }
+      render json: { message: msg, error: '' }
     end
   end
 
