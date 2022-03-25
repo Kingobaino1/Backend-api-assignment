@@ -66,10 +66,9 @@ It contains the following API endpoints
 
 <p align="center">
     <br />
-    <a href="https://github.com/Kingobaino1/merchandise-store"><strong>Explore this project »</strong></a>
+    <a href="https://github.com/Kingobaino1/Backend-api-assignment"><strong>Explore this project »</strong></a>
     <br />
     <br />&#10023;
-    <a href="#Watch-the-Live-Version">Watch the Live Version</a> &#10023;
     <a href="#Prerequisites">Prerequisites</a> &#10023;
     <a href="#Getting-Started">Getting Started</a> &#10023;
     <a href="#Usage">Usage</a> &#10023;
@@ -84,10 +83,6 @@ It contains the following API endpoints
 </p>
 
 <br/>
-
-## Watch the Live Version
-
-- [API Documentation](https://documenter.getpostman.com/view/8204534/UVkvHBoo)
 
 ### Prerequisites
 
