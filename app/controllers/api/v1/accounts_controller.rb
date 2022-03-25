@@ -1,5 +1,5 @@
 class Api::V1::AccountsController < ApplicationController
-  skip_before_action :authorized, only: :create
+  skip_before_action :authorized, only: [:create]
 
   def create
     @account = Account.new(account_params)
@@ -10,10 +10,9 @@ class Api::V1::AccountsController < ApplicationController
     elsif Account.find_by(username: params[:username])
       render json: { errors: 'Account already exists', status: :not_acceptable }
     else
-      render json: { errors: 'Password does not match with password confirmation', status: :not_acceptable }
+      render json: { errors: 'Account not created', status: :not_acceptable }
     end
   end
-
   private
 
   def account_params

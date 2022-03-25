@@ -1,5 +1,6 @@
 class Api::Inbound::SmsController < ApplicationController
   before_action :authorized
+
   def create
     @to = phone_number(query_params[:to])
     text = query_params[:text]

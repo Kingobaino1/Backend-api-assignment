@@ -18,8 +18,9 @@ gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
 # Use Active Model has_secure_password
- gem 'bcrypt', '~> 3.1.7'
- gem 'jwt'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+# gem 'knock'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

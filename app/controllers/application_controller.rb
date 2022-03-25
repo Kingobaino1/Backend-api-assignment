@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::API
   before_action :authorized
+  
+  def jwt_key
+    ENV['SESSION_SECRET']
+  end
 
   def encode_token(payload)
     JWT.encode(payload, jwt_key)
@@ -22,8 +26,8 @@ class ApplicationController < ActionController::API
 
   def logged_in_user
     if decoded_token
-      user_id = decoded_token[0]['account_id']
-      @account = Account.find_by(id: user_id)
+      account_id = decoded_token[0]['account_id']
+      @account = Account.find_by(id: account_id)
     end
   end
 
@@ -32,11 +36,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
-    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
-  end
-
-  def jwt_key
-    ENV['SESSION_SECRET']
+    render json: { message: 'Not authorized' }, status: :unauthorized unless logged_in?
   end 
 
   def length_validation
@@ -57,7 +57,7 @@ class ApplicationController < ActionController::API
 
   def found_number(param, name, to, from, msg)
     if param.nil?
-      render json: { message: '', error: name + ' parameter not found1' }
+      render json: { message: '', error: name + ' parameter not found' }
     elsif param.account_id != logged_in_user.id
       render json: { message: '', error: name + ' parameter not found' }
     elsif to == from
@@ -136,7 +136,7 @@ class ApplicationController < ActionController::API
   def creation_time(key, value)
   error = ''
   ttl = $redis.ttl(key) 
-  if count() >= 2 && ttl <= 86400
+  if count() >= 50 && ttl <= 86400
     error = "limit reached for from #{value}"
   end
   error
