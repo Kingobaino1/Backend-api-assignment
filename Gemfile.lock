@@ -223,6 +223,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.4, >= 6.0.4.7)
+  rake (~> 13.0)
   redis (~> 4.0)
   redis-namespace
   redis-rack-cache
