@@ -20,7 +20,7 @@ gem 'redis-rack-cache'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
-gem "rake", "~> 13.0"
+# gem "rake", "~> 13.0"
 # gem 'knock'
 
 # Use Active Storage variant
