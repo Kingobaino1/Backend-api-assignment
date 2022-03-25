@@ -1,4 +1,4 @@
-# XXX Merchandising Store
+# MY MONEY KARMA
 Welcome to the Backend API assignment!
 It contains the following API endpoints
 
