@@ -139,6 +139,10 @@ While the server is still on, open Postman and follow these instructions:
   6. click `send`
   7. copy the `jwt toke`
 
+
+![screenshot](./app/img/jwt.jpeg)
+<p align='center'><small>Create user with jwt</small></p>
+
 # Add a new phone number to an account in the database endpoint:
  1. paste this url: `http://localhost:3000/api/v1/phone_numbers` in *Enter request ULR* tab
   2. select `POST`
@@ -168,20 +172,16 @@ While the server is still on, open Postman and follow these instructions:
   5. select `JSON`
   6. click `send`
   7. test for different test cases by altering the values
+![screenshot](./app/img/no_auth.jpeg)
+<p align='center'><small>inbound/outbound sms</small></p>
 
-![screenshot](./app/img/get_item.jpeg)
-<p align='center'><small>Get all items</small></p>
+![screenshot](./app/img/auth.jpeg)
+<p align='center'><small>inbound/outbound sms</small></p>
 
 # Get the list of phone numbers:
   1. paste this url: `http://localhost:3000/api/v1/phone_numbers` in *Enter request ULR* tab 
   2. select `GET`
   3. click `send`
-
-![screenshot](./app/img/update_item.jpeg)
-<p align='center'><small>Update an item</small></p>
-
-![screenshot](./app/img/total_price.jpeg)
-<p align='center'><small>Total price of items</small></p>
 
 
 ### Run unit tests
