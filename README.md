@@ -7,11 +7,21 @@ It contains the following API endpoints
   > A successful API request will
    - return HTTP 200 OK status
    - add a new account to the database and populate it as a json object in the response body.
-  
+
   > An unsuccessful API request will 
    - return HTTP 200 OK status
    - Populate an error message *Account already exists* in the response body if username matches an already existing account
    - Populate an error message *Account not created* in the response body 
+
+# Add login to an existing account endpoint: 
+  API endpoint to *Create a new account* 
+  > A successful API request will
+   - return HTTP 200 OK status
+   - return the user with a JWT token.
+  
+  > An unsuccessful API request will 
+   - return HTTP 200 OK status
+   - Populate an error message *Invalid username or password* in the response body
 
 # Add phone number to an a particular account
   API endpoint to *Create a new phone number* 
@@ -21,7 +31,7 @@ It contains the following API endpoints
   
   > An unsuccessful API request will 
    - return HTTP 200 OK status
-   - Populate an error message *Numbber not added to this account* in the response body 
+   - Populate an error message *corresponding to the error encountered* in the response body 
 
 # Get all numbers endpoint:
   API endpoint to *Fetch all numbers* in the store
@@ -124,7 +134,7 @@ Install the following software to enable you run the code:
 
 ### Usage
 
-While the server is still on, open Postman and follow these instructions:
+While the rails and redis servers are still on, open Postman and follow these instructions:
 # Add a new account to the database endpoint:
  1. paste this url: `http://localhost:3000/api/v1/accounts` in *Enter request ULR* tab
   2. select `POST`
@@ -138,6 +148,15 @@ While the server is still on, open Postman and follow these instructions:
 ![screenshot](./app/img/jwt.jpeg)
 <p align='center'><small>Create user with jwt</small></p>
 
+# Login to an account to endpoint:
+  1. paste this url: `http://localhost:3000/api/v1/login` in *Enter request ULR* tab
+  2. select `POST`
+  3. select `Body`
+  4. select `raw` and enter `{ "username": "account_user_name", "password": "account_password" }` 
+  5. select `JSON`
+  6. click `send`
+  7. copy the `jwt toke`
+
 # Add a new phone number to an account in the database endpoint:
  1. paste this url: `http://localhost:3000/api/v1/phone_numbers` in *Enter request ULR* tab
   2. select `POST`
@@ -150,7 +169,7 @@ While the server is still on, open Postman and follow these instructions:
   1. paste this url: `http://localhost:3000/api/inbound/sms` in *Enter request ULR* tab
   2. select `POST`
   3. click on `Authorization`
-  4. select `Bearer Token` and past the `Token` of the user account you want to use.
+  4. select `Bearer Token` and past the `Token` generated from account creation or login of the user account you want to use.
   3. select `Body`
   4. select `raw` and enter `{ "from": "num1", "to": "num2", "text": "text_here" }` 
   5. select `JSON`
@@ -161,7 +180,7 @@ While the server is still on, open Postman and follow these instructions:
   1. paste this url: `http://localhost:3000/api/outbound/sms` in *Enter request ULR* tab
   2. select `POST`
   3. click on `Authorization`
-  4. select `Bearer Token` and past the `Token` of the user account you want to use.
+  4. select `Bearer Token` and past the `Token` generated from account creation or login of the user account you want to use.
   3. select `Body`
   4. select `raw` and enter `{ "from": "num1", "to": "num2", "text": "text_here" }` 
   5. select `JSON`
