@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authorized
+  # before_action :authorized
   
   def jwt_key
     ENV['SESSION_SECRET']
@@ -31,13 +31,13 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def logged_in?
-    !!logged_in_user
-  end
+  # def logged_in?
+  #   !!logged_in_user
+  # end
 
-  def authorized
-    render json: { message: 'Not authorized' }, status: :unauthorized unless logged_in?
-  end 
+  # def authorized
+  #   render json: { message: 'Not authorized' }, status: :unauthorized unless logged_in?
+  # end 
 
   def length_validation
     error = ''

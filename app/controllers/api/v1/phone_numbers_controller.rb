@@ -1,6 +1,4 @@
 class Api::V1::PhoneNumbersController < ApplicationController
-  skip_before_action :authorized
-
   def index
     @numbers = PhoneNumber.all
     render json: @numbers
