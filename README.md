@@ -142,7 +142,7 @@ While the rails and redis servers are still on, open Postman and follow these in
   4. select `raw` and enter `{ "username": "user_name", "password": "password" }` 
   5. select `JSON`
   6. click `send`
-  7. copy the `jwt toke`
+  7. copy the `jwt token`
 
 
 ![screenshot](./app/img/jwt.jpeg)
@@ -155,7 +155,7 @@ While the rails and redis servers are still on, open Postman and follow these in
   4. select `raw` and enter `{ "username": "account_user_name", "password": "account_password" }` 
   5. select `JSON`
   6. click `send`
-  7. copy the `jwt toke`
+  7. copy the `jwt token`
 
 # Add a new phone number to an account in the database endpoint:
  1. paste this url: `http://localhost:3000/api/v1/phone_numbers` in *Enter request ULR* tab
