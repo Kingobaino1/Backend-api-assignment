@@ -7,11 +7,16 @@ class Api::V1::PhoneNumbersController < ApplicationController
   end
 
   def create
-    @phone_number = PhoneNumber.new(number_params)
-    if @phone_number.save
-      render json: @phone_number
+    @number_exist = phone_number(params[:number])
+    if @number_exist && @number_exist.account_id == params[:account_id]
+       render json: { error: 'This number already exist for this account' }
     else
-      render json: { error: 'Numbber not added to this account' }
+      @phone_number = PhoneNumber.new(number_params)
+      if @phone_number.save
+        render json: @phone_number
+      else
+        render json: { error: @phone_number.errors.full_messages.last }
+      end
     end
   end
 
