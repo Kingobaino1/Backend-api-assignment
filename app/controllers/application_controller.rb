@@ -45,11 +45,13 @@ class ApplicationController < ActionController::API
      render json: { message: '', error: error }
   end
 
-  def found_number(param, name, to, from, msg)
+  def found_number(param, name, to, from, msg, name2, param2)
     if param.nil?
       render json: { message: '', error: name + ' parameter not found' }
     elsif param.account_id != logged_in_user.id
       render json: { message: '', error: name + ' parameter not found' }
+    elsif !param2
+      render json: { message: '', error: name2 + ' parameter not found in the database' }
     elsif to == from
       render json: { message: '', error: 'unknown failure'}
     else
@@ -88,7 +90,7 @@ class ApplicationController < ActionController::API
     stop_hash = $redis.hgetall 'STOP'
     stop_hash.each do |key, value|
       num_exists = phone_number(value)
-      if to == key && from == value
+      if to == key && from == value || to == value && from == key
         stop_error = "sms from #{from} to #{to} blocked by STOP request here"
         break
       else
