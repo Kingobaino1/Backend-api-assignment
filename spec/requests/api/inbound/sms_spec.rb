@@ -71,5 +71,4 @@ RSpec.describe "Api::Inbound::Sms", type: :request do
     post '/api/inbound/sms', params: { from: '1234567', to: '123456', text: 'inbound sms is okay now' }, headers: { 'Authorization': "Bearer #{login_account()['jwt']}" }
     expect(JSON.parse(response.body)['message']).to eq('inbound sms ok')
   end
-
 end
