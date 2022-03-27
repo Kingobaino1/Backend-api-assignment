@@ -14,7 +14,7 @@ RSpec.describe "Api::V1::PhoneNumbers", type: :request do
     it 'returns the phone number\'s account id' do
       expect(JSON.parse(response.body)['account_id']).to eq(@user.id)
     end
-  
+
     it 'returns a created status' do
       expect(response).to have_http_status(:ok)
     end

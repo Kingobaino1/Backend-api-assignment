@@ -37,9 +37,9 @@ class ApplicationController < ActionController::API
       elsif value.length == 0
         error = key + ' is missing'
       elsif (key == 'text') && (value.size > 120)
-        error = key + ' is invalid '
+        error = key + ' is invalid'
       elsif (key == 'to' || key == 'from') && (value.size < 6 || value.size > 16)
-        error = key + ' is invalid '
+        error = key + ' is invalid'
       end
     end
      render json: { message: '', error: error }
