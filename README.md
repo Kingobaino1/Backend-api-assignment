@@ -120,7 +120,7 @@ Install the following software to enable you run the code:
 1. Open Terminal.
 2. Navigate to your desired location to download the contents of this repository.
 3. Copy and paste the following code into the Terminal :
-   `git@github.com:Kingobaino1/Backend-api-assignment.git`
+   `git clone git@github.com:Kingobaino1/Backend-api-assignment.git`
 4. Run `cd Backend-api-assignment`
 5. Install the needed gems `bundle install`
 6. Next, create and migrate the database: 
